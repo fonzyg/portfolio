@@ -9,6 +9,12 @@ Static software engineering portfolio site for Alfonso Avila.
 - Mom's Clothing Biz
 - Trading Bot
 
+## Live Links
+
+- Portfolio: local static site until deployed
+- OakVault: https://oakvaultcyber.com/
+- AAAITSERVICE: https://serveratutahwithaaaservices.com/
+
 ## Run Locally
 
 This is a static site. Open `index.html` directly in a browser, or serve the folder locally:
