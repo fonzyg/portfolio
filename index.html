@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Alfonso Avila is a full-stack software engineer in Salt Lake City building cybersecurity, AI, e-commerce, and data-driven products."
+    />
+    <title>Alfonso Avila | Full-Stack Software Engineer</title>
+    <link rel="stylesheet" href="./styles.css?v=3" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Alfonso Avila home">
+        <span class="brand-mark">AA</span>
+        <span>
+          <strong>Alfonso Avila</strong>
+          <small>SLC · Remote</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#stack">Stack</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">Full-stack software engineer</p>
+          <h1>Alfonso Avila</h1>
+          <p class="hero-text">
+            I build product-shaped software across cybersecurity, AI services,
+            e-commerce, and data systems: Spring Boot APIs, React dashboards,
+            Python/FastAPI services, SQL workflows, Docker, CI/CD, and
+            deployment-ready documentation.
+          </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="#projects">
+              <span aria-hidden="true">↓</span>
+              View projects
+            </a>
+            <a class="button" href="./assets/Alfonso_Avila_10_9_24.pdf">
+              <span aria-hidden="true">↧</span>
+              Resume PDF
+            </a>
+            <a class="icon-link" href="https://github.com/fonzyg" target="_blank" rel="noreferrer">
+              GitHub
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <dl class="quick-stats" aria-label="Portfolio summary">
+            <div>
+              <dt>4</dt>
+              <dd>featured builds</dd>
+            </div>
+            <div>
+              <dt>Java · React · Python</dt>
+              <dd>core stack range</dd>
+            </div>
+            <div>
+              <dt>SLC + remote</dt>
+              <dd>open to SWE roles</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="hero-media">
+          <img
+            src="./assets/hero-lab.png"
+            alt="Generated portfolio preview showing four software project workstreams"
+          />
+        </figure>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Featured work</p>
+          <h2>Projects built like real products</h2>
+          <p>
+            Each project is framed for recruiters: what it does, what I built,
+            the stack, and the technical decisions behind it.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter projects">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="fullstack">Full-stack</button>
+          <button class="filter-button" type="button" data-filter="security">Security</button>
+          <button class="filter-button" type="button" data-filter="ai">AI/API</button>
+          <button class="filter-button" type="button" data-filter="data">Data</button>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured" data-tags="fullstack security data">
+            <div class="project-media">
+              <img
+                class="project-image"
+                src="./assets/oakvault-real.jpg"
+                alt="Actual OakVault public website screenshot"
+              />
+              <span class="image-note">Actual public site</span>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">
+                <span>Flagship</span>
+                <span>Cybersecurity</span>
+              </div>
+              <h3>OakVault</h3>
+              <p>
+                Full-stack deception security platform that plants believable
+                fake assets and turns attacker interaction into a defender-side
+                incident story.
+              </p>
+              <ul class="project-points">
+                <li>Spring Boot backend with JWT-secured admin APIs.</li>
+                <li>React/Vite dashboard for trap activity and top-IP reporting.</li>
+                <li>Layered vault descent, flood lockouts, evidence PDF, SIEM export.</li>
+              </ul>
+              <div class="tech-list" aria-label="OakVault technologies">
+                <span>Java 17</span>
+                <span>Spring Boot</span>
+                <span>React 19</span>
+                <span>PostgreSQL</span>
+                <span>JWT</span>
+              </div>
+              <div class="project-links">
+                <a href="https://oakvaultcyber.com/" target="_blank" rel="noreferrer">Live site ↗</a>
+                <span class="muted-link">Private repo</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="fullstack ai data">
+            <div class="project-media">
+              <img
+                class="project-image"
+                src="./assets/aaaitservice-real.jpg"
+                alt="Actual AAAITSERVICE public landing page screenshot"
+              />
+              <span class="image-note">Actual landing page</span>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">
+                <span>Business platform</span>
+                <span>AI tutoring</span>
+              </div>
+              <h3>AAAITSERVICE</h3>
+              <p>
+                Booking, CRM, and admin platform for an AI tutoring business
+                serving Salt Lake City adults 55+.
+              </p>
+              <ul class="project-points">
+                <li>Public React landing page plus protected admin dashboard.</li>
+                <li>Spring Boot API for bookings, clients, referrals, and sessions.</li>
+                <li>SendGrid notifications and personalized PDF cheat sheets.</li>
+              </ul>
+              <div class="tech-list" aria-label="AAAITSERVICE technologies">
+                <span>Java 21</span>
+                <span>Spring Boot 3.4</span>
+                <span>React 18</span>
+                <span>Tailwind</span>
+                <span>Flyway</span>
+              </div>
+              <div class="project-links">
+                <span class="muted-link">Local product build</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="fullstack ai data">
+            <div class="project-media">
+              <img
+                class="project-image"
+                src="./assets/moms-preview.png"
+                alt="Architecture visual for Mom's Clothing Biz"
+              />
+              <span class="image-note">Architecture visual</span>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">
+                <span>E-commerce</span>
+                <span>AI images</span>
+              </div>
+              <h3>Mom's Clothing Biz</h3>
+              <p>
+                Full-stack clothing storefront with transactional checkout,
+                visible SQL, Docker, CI, and AI-generated on-model product shots.
+              </p>
+              <ul class="project-points">
+                <li>FastAPI backend with explicit SQL schema and queries.</li>
+                <li>React/TypeScript catalog, filters, cart, and admin tools.</li>
+                <li>FASHN API integration with stock-aware quality tiers.</li>
+              </ul>
+              <div class="tech-list" aria-label="Mom's Clothing Biz technologies">
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>TypeScript</span>
+                <span>SQLite</span>
+                <span>Docker</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/fonzyg/moms-clothing-biz" target="_blank" rel="noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="data">
+            <div class="project-media">
+              <img
+                class="project-image"
+                src="./assets/trading-preview.png"
+                alt="Architecture visual for Trading Bot"
+              />
+              <span class="image-note">Architecture visual</span>
+            </div>
+            <div class="project-body">
+              <div class="project-kicker">
+                <span>Systems logic</span>
+                <span>Risk engine</span>
+              </div>
+              <h3>Trading Bot</h3>
+              <p>
+                Node.js algorithmic trading framework with simulation,
+                CSV backtesting, live paper trading, and a real-time dashboard.
+              </p>
+              <ul class="project-points">
+                <li>Moving-average crossover strategy with broker adapters.</li>
+                <li>Stop loss, take profit, daily loss caps, and sizing rules.</li>
+                <li>Yahoo Finance price feed and JSON trade persistence.</li>
+              </ul>
+              <div class="tech-list" aria-label="Trading Bot technologies">
+                <span>Node.js</span>
+                <span>Vanilla JS</span>
+                <span>Yahoo Finance</span>
+                <span>CSV</span>
+                <span>JSON</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/fonzyg/trading-bot" target="_blank" rel="noreferrer">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-band" id="stack">
+        <div class="section-heading compact">
+          <p class="eyebrow">Technical range</p>
+          <h2>What the portfolio proves</h2>
+        </div>
+        <div class="stack-grid">
+          <section class="stack-panel">
+            <h3>Backend</h3>
+            <p>Java, Spring Boot, Spring Security, JPA/Hibernate, Maven, Python, FastAPI, Node.js REST services.</p>
+          </section>
+          <section class="stack-panel">
+            <h3>Frontend</h3>
+            <p>React, TypeScript, Vite, Tailwind CSS, React Router, TanStack Query, Axios, accessible UI flows.</p>
+          </section>
+          <section class="stack-panel">
+            <h3>Data</h3>
+            <p>PostgreSQL, H2, SQLite, Flyway migrations, explicit SQL joins, aggregation, flat-file trade logs.</p>
+          </section>
+          <section class="stack-panel">
+            <h3>Product + DevOps</h3>
+            <p>Docker, Docker Compose, GitHub Actions, demo packaging, PDF generation, email alerts, SIEM exports.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="section" id="resume">
+        <div class="resume-layout">
+          <div>
+            <p class="eyebrow">Resume-ready</p>
+            <h2>Selected engineering highlights</h2>
+            <p>
+              These are the strongest points to carry into the resume and
+              interview story: full-stack ownership, production-shaped systems,
+              and projects with real technical depth.
+            </p>
+            <a class="button primary" href="./assets/Alfonso_Avila_10_9_24.pdf">Open resume PDF</a>
+          </div>
+          <ol class="resume-list">
+            <li>
+              Built OakVault, a full-stack cybersecurity platform using Java,
+              Spring Boot, React, JWT auth, JPA, and PostgreSQL/H2.
+            </li>
+            <li>
+              Engineered admin dashboards, protected API surfaces, event feeds,
+              evidence exports, reporting views, and repeatable demo workflows.
+            </li>
+            <li>
+              Shipped projects spanning AI integrations, e-commerce checkout,
+              SQL analytics, PDF generation, CI/CD, Docker, and real-time data loops.
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Available for software engineering roles</h2>
+          <p>
+            Salt Lake City based and remote-ready. Best fits: full-stack,
+            backend, product engineering, security-adjacent software, and
+            AI-enabled business tools.
+          </p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:alfonsoavila0479@outlook.com">alfonsoavila0479@outlook.com</a>
+          <a href="http://linkedin.com/in/alfonso-avila-41981b191" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/fonzyg" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Alfonso Avila</span>
+      <span>Full-stack software engineer · Salt Lake City + Remote</span>
+    </footer>
+
+    <script src="./script.js?v=1"></script>
+  </body>
+</html>

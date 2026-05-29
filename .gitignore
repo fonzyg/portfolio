@@ -1,0 +1,13 @@
+# OS/editor
+.DS_Store
+.vscode/
+
+# Logs and temp files
+*.log
+tmp/
+.cache/
+
+# Dependency/build output, if tooling is added later
+node_modules/
+dist/
+build/

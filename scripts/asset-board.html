@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Asset Board</title>
+    <style>
+      :root {
+        --ink: #18201c;
+        --paper: #fbfaf5;
+        --green: #1e5b4f;
+        --green-dark: #143c35;
+        --gold: #d9a441;
+        --brick: #b75a42;
+        --blue: #315d8a;
+        --line: #dfe5de;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #d7ded6;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--ink);
+      }
+
+      .board {
+        display: grid;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      .thumb {
+        position: relative;
+        width: 1200px;
+        height: 675px;
+        overflow: hidden;
+        border-radius: 0;
+        background: var(--paper);
+      }
+
+      .thumb::before {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(24, 32, 28, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 32, 28, 0.045) 1px, transparent 1px);
+        background-size: 56px 56px;
+        content: "";
+        pointer-events: none;
+      }
+
+      .frame {
+        position: absolute;
+        inset: 46px;
+        border: 1px solid rgba(24, 32, 28, 0.12);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 24px 60px rgba(24, 32, 28, 0.16);
+      }
+
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 58px;
+        padding: 0 22px;
+        border-bottom: 1px solid rgba(24, 32, 28, 0.12);
+        font-weight: 900;
+      }
+
+      .dots {
+        display: flex;
+        gap: 10px;
+      }
+
+      .dots span {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: #d5dcd4;
+      }
+
+      .label {
+        position: relative;
+        z-index: 2;
+        font-size: 23px;
+      }
+
+      .small {
+        color: #6a746d;
+        font-size: 15px;
+        font-weight: 750;
+      }
+
+      .panel {
+        border: 1px solid rgba(24, 32, 28, 0.12);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .hero-grid {
+        position: absolute;
+        inset: 92px 58px 54px;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 28px;
+      }
+
+      .hero-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 38px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      .hero-title h1 {
+        margin: 0;
+        font-size: 60px;
+        line-height: 0.98;
+      }
+
+      .hero-title p {
+        margin: 22px 0 0;
+        color: #58645d;
+        font-size: 22px;
+        line-height: 1.35;
+      }
+
+      .hero-systems {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .system-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+        color: #fff;
+        border-radius: 8px;
+        min-height: 178px;
+      }
+
+      .system-card strong {
+        font-size: 22px;
+      }
+
+      .system-card span {
+        font-size: 15px;
+        opacity: 0.86;
+      }
+
+      .rails {
+        display: grid;
+        gap: 10px;
+      }
+
+      .rail {
+        height: 10px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.48);
+      }
+
+      .oak {
+        background: #111916;
+        color: #dce7dd;
+      }
+
+      .oak::before {
+        opacity: 0.08;
+      }
+
+      .oak .frame {
+        border-color: rgba(255, 255, 255, 0.12);
+        background: #17231f;
+      }
+
+      .oak .bar {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .oak-grid {
+        position: absolute;
+        inset: 88px 22px 22px;
+        display: grid;
+        grid-template-columns: 0.82fr 1.1fr 0.9fr;
+        gap: 22px;
+      }
+
+      .vault-list,
+      .timeline,
+      .signal {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .vault {
+        height: 86px;
+        margin-top: 12px;
+        padding: 13px;
+        border: 1px solid rgba(217, 164, 65, 0.42);
+        border-radius: 8px;
+        background: rgba(217, 164, 65, 0.12);
+      }
+
+      .vault strong,
+      .timeline strong,
+      .signal strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #fff;
+        font-size: 18px;
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        align-items: start;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .timeline-dot {
+        display: grid;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        background: #d9a441;
+        color: #1d1a12;
+        font-weight: 950;
+      }
+
+      .signal-chart {
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        height: 190px;
+        margin-top: 18px;
+      }
+
+      .signal-chart span {
+        flex: 1;
+        border-radius: 8px 8px 0 0;
+        background: #4aa08f;
+      }
+
+      .crm {
+        background: #f6f1e6;
+      }
+
+      .crm-grid {
+        position: absolute;
+        inset: 88px 22px 22px;
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 22px;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .stat {
+        min-height: 118px;
+        padding: 18px;
+      }
+
+      .stat b {
+        display: block;
+        margin-top: 14px;
+        color: #143c35;
+        font-size: 36px;
+      }
+
+      .schedule {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .schedule-row {
+        display: grid;
+        grid-template-columns: 120px 1fr 104px;
+        align-items: center;
+        min-height: 54px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .pill {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 8px;
+        background: #e9f1eb;
+        color: #143c35;
+        font-weight: 850;
+      }
+
+      .shop {
+        background: #f6f8fa;
+      }
+
+      .shop-grid {
+        position: absolute;
+        inset: 88px 22px 22px;
+        display: grid;
+        grid-template-columns: 1fr 0.88fr;
+        gap: 22px;
+      }
+
+      .catalog {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .product {
+        min-height: 195px;
+        padding: 10px;
+        background: #fff;
+      }
+
+      .photo {
+        height: 94px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(183, 90, 66, 0.9), rgba(217, 164, 65, 0.45)),
+          #f2dfd4;
+      }
+
+      .product:nth-child(2) .photo {
+        background:
+          linear-gradient(135deg, rgba(49, 93, 138, 0.9), rgba(30, 91, 79, 0.5)),
+          #e0e8ef;
+      }
+
+      .product:nth-child(3) .photo,
+      .product:nth-child(5) .photo {
+        background:
+          linear-gradient(135deg, rgba(30, 91, 79, 0.9), rgba(217, 164, 65, 0.5)),
+          #dce8df;
+      }
+
+      .ai-panel {
+        padding: 20px;
+      }
+
+      .ai-box {
+        height: 210px;
+        margin-top: 16px;
+        border: 2px dashed rgba(49, 93, 138, 0.34);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, transparent 49%, rgba(49, 93, 138, 0.25) 50%, transparent 51%),
+          linear-gradient(180deg, #fff, #eef4f8);
+      }
+
+      .tier-list {
+        display: grid;
+        gap: 9px;
+        margin-top: 16px;
+      }
+
+      .tier {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 8px;
+        background: #edf2f8;
+        font-weight: 850;
+      }
+
+      .trade {
+        background: #18201c;
+        color: #e7eee8;
+      }
+
+      .trade::before {
+        opacity: 0.08;
+      }
+
+      .trade .frame {
+        border-color: rgba(255, 255, 255, 0.1);
+        background: #202d28;
+      }
+
+      .trade .bar {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .trade-grid {
+        position: absolute;
+        inset: 88px 22px 22px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 22px;
+      }
+
+      .chart {
+        position: relative;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .chart svg {
+        position: absolute;
+        inset: 82px 24px 38px;
+        width: calc(100% - 48px);
+        height: calc(100% - 120px);
+      }
+
+      .risk {
+        display: grid;
+        gap: 12px;
+      }
+
+      .risk-card {
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .risk-card b {
+        display: block;
+        margin-top: 12px;
+        color: #d9a441;
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="board">
+      <section class="thumb" id="hero">
+        <div class="frame">
+          <div class="bar">
+            <span class="label">Alfonso Avila / SWE Portfolio</span>
+            <span class="small">Security · AI · E-commerce · Data</span>
+          </div>
+          <div class="hero-grid">
+            <div class="hero-title">
+              <h1>Full-stack builds with product depth.</h1>
+              <p>React dashboards, Spring Boot APIs, Python services, SQL workflows, Docker, CI, and polished demos.</p>
+            </div>
+            <div class="hero-systems">
+              <div class="system-card" style="background:#143c35">
+                <strong>OakVault</strong><span>Threat story</span>
+                <div class="rails"><span class="rail"></span><span class="rail"></span><span class="rail"></span></div>
+              </div>
+              <div class="system-card" style="background:#b75a42">
+                <strong>CRM</strong><span>Bookings + PDFs</span>
+                <div class="rails"><span class="rail"></span><span class="rail"></span><span class="rail"></span></div>
+              </div>
+              <div class="system-card" style="background:#315d8a">
+                <strong>Storefront</strong><span>AI product shots</span>
+                <div class="rails"><span class="rail"></span><span class="rail"></span><span class="rail"></span></div>
+              </div>
+              <div class="system-card" style="background:#735b1d">
+                <strong>Trading</strong><span>Risk engine</span>
+                <div class="rails"><span class="rail"></span><span class="rail"></span><span class="rail"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thumb oak" id="oakvault">
+        <div class="frame">
+          <div class="bar">
+            <span class="label">OakVault Defender Dashboard</span>
+            <div class="dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="oak-grid">
+            <div class="vault-list">
+              <strong>Decoy vaults</strong>
+              <p class="small">Layered assets with believable access paths</p>
+              <div class="vault"><strong>Finance Vault</strong><span class="small">Layer 2 · watched</span></div>
+              <div class="vault"><strong>Client Records</strong><span class="small">Layer 1 · lure active</span></div>
+              <div class="vault"><strong>Admin Keys</strong><span class="small">Flood armed</span></div>
+            </div>
+            <div class="timeline">
+              <strong>Incident story</strong>
+              <div class="timeline-row"><div class="timeline-dot">01</div><div><strong>Vault discovered</strong><span class="small">Public trap endpoint touched</span></div></div>
+              <div class="timeline-row"><div class="timeline-dot">02</div><div><strong>Layer descended</strong><span class="small">Valid passphrase accepted</span></div></div>
+              <div class="timeline-row"><div class="timeline-dot">03</div><div><strong>Wrong guesses</strong><span class="small">Repeated suspicious attempts</span></div></div>
+              <div class="timeline-row"><div class="timeline-dot">04</div><div><strong>Flood lockout</strong><span class="small">Evidence report ready</span></div></div>
+            </div>
+            <div class="signal">
+              <strong>Signal volume</strong>
+              <p class="small">High-signal trap activity, not generic alert noise</p>
+              <div class="signal-chart">
+                <span style="height:34%"></span><span style="height:48%"></span><span style="height:41%"></span><span style="height:68%"></span><span style="height:92%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thumb crm" id="aaaitservice">
+        <div class="frame">
+          <div class="bar">
+            <span class="label">AAAITSERVICE Admin CRM</span>
+            <span class="small">Bookings · Clients · Referrals · PDF cheat sheets</span>
+          </div>
+          <div class="crm-grid">
+            <div class="stat-grid">
+              <div class="panel stat"><span class="small">Total clients</span><b>42</b></div>
+              <div class="panel stat"><span class="small">Monthly sessions</span><b>18</b></div>
+              <div class="panel stat"><span class="small">Revenue</span><b>$2.7k</b></div>
+              <div class="panel stat"><span class="small">Upcoming</span><b>9</b></div>
+            </div>
+            <div class="panel schedule">
+              <h2>Upcoming bookings</h2>
+              <div class="schedule-row"><strong>Maria R.</strong><span>Claude basics</span><span class="pill">Confirmed</span></div>
+              <div class="schedule-row"><strong>James T.</strong><span>AI safety</span><span class="pill">Requested</span></div>
+              <div class="schedule-row"><strong>Linda A.</strong><span>Travel planning</span><span class="pill">Confirmed</span></div>
+              <div class="schedule-row"><strong>Robert M.</strong><span>Email help</span><span class="pill">Follow-up</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thumb shop" id="moms">
+        <div class="frame">
+          <div class="bar">
+            <span class="label">Mom's Clothing Biz Storefront</span>
+            <span class="small">Catalog · Checkout · SQL analytics · AI model shots</span>
+          </div>
+          <div class="shop-grid">
+            <div class="panel catalog">
+              <div class="product"><div class="photo"></div><strong>Denim Jacket</strong><p class="small">Stock: 12</p></div>
+              <div class="product"><div class="photo"></div><strong>Summer Dress</strong><p class="small">Stock: 4</p></div>
+              <div class="product"><div class="photo"></div><strong>Blazer</strong><p class="small">Stock: 9</p></div>
+              <div class="product"><div class="photo"></div><strong>Cardigan</strong><p class="small">Stock: 6</p></div>
+              <div class="product"><div class="photo"></div><strong>Silk Top</strong><p class="small">Stock: 3</p></div>
+              <div class="product"><div class="photo"></div><strong>Wide Pants</strong><p class="small">Stock: 15</p></div>
+            </div>
+            <div class="panel ai-panel">
+              <h2>AI product imaging</h2>
+              <p class="small">Stock-aware FASHN quality routing with demo fallback.</p>
+              <div class="ai-box"></div>
+              <div class="tier-list">
+                <div class="tier"><span>Premium</span><span>High stock</span></div>
+                <div class="tier"><span>Balanced</span><span>Medium stock</span></div>
+                <div class="tier"><span>Draft</span><span>Low stock</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="thumb trade" id="trading">
+        <div class="frame">
+          <div class="bar">
+            <span class="label">Crude Oil Strategy Engine</span>
+            <span class="small">Simulation · Backtest · Paper trading</span>
+          </div>
+          <div class="trade-grid">
+            <div class="chart">
+              <h2>USO paper session</h2>
+              <p class="small">Moving average crossover with risk controls on every tick.</p>
+              <svg viewBox="0 0 720 360" role="img" aria-label="Trading line chart">
+                <path d="M0 260 L70 232 L142 248 L210 180 L280 196 L350 138 L420 122 L490 156 L560 96 L630 116 L720 70" fill="none" stroke="#d9a441" stroke-width="10" stroke-linecap="round" />
+                <path d="M0 300 L70 282 L142 270 L210 240 L280 230 L350 210 L420 188 L490 174 L560 164 L630 142 L720 128" fill="none" stroke="#4aa08f" stroke-width="8" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="risk">
+              <div class="risk-card"><span class="small">Risk controls</span><b>5+</b></div>
+              <div class="risk-card"><span class="small">Default interval</span><b>60s</b></div>
+              <div class="risk-card"><span class="small">Execution modes</span><b>3</b></div>
+              <div class="risk-card"><span class="small">Live adapter</span><b>Gated</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
