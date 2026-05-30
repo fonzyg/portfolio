@@ -205,15 +205,15 @@ function oakvault() {
   return p;
 }
 
-function aaaitservice() {
+function aaaItToolkit() {
   const p = image("#f6f1e6");
   grid(p, color("#18201c", 0.04));
-  windowFrame(p, 46, 46, 1108, 583, "AAAITSERVICE ADMIN CRM");
+  windowFrame(p, 46, 46, 1108, 583, "AAA IT TOOLKIT PORTAL");
   const stats = [
-    ["CLIENTS", "42"],
-    ["SESSIONS", "18"],
-    ["REVENUE", "$2.7K"],
-    ["UPCOMING", "9"],
+    ["QUOTES", "42"],
+    ["BOOKINGS", "18"],
+    ["INVOICES", "$2.7K"],
+    ["JOBS", "9"],
   ];
   stats.forEach(([label, value], i) => {
     const x = 84 + (i % 2) * 235;
@@ -225,8 +225,8 @@ function aaaitservice() {
   });
   rect(p, 556, 132, 554, 455, color("#ffffff"));
   stroke(p, 556, 132, 554, 455, color("#dfe5de"), 2);
-  text(p, "UPCOMING BOOKINGS", 586, 168, 5, color("#143c35"));
-  ["MARIA R. / CLAUDE", "JAMES T. / AI SAFETY", "LINDA A. / TRAVEL", "ROBERT M. / EMAIL"].forEach((row, i) => {
+  text(p, "SERVICE REQUESTS", 586, 168, 5, color("#143c35"));
+  ["RACK INSTALL", "CABLE CLEANUP", "SERVER MOVE", "SITE WALKTHROUGH"].forEach((row, i) => {
     const y = 226 + i * 72;
     rect(p, 586, y, 470, 52, color("#fbfaf5"));
     stroke(p, 586, y, 470, 52, color("#dfe5de"), 1);
@@ -332,7 +332,7 @@ function png(pixels) {
 const renders = {
   "hero-lab.png": hero,
   "oakvault-preview.png": oakvault,
-  "aaaitservice-preview.png": aaaitservice,
+  "aaa-it-toolkit-preview.png": aaaItToolkit,
   "moms-preview.png": moms,
   "trading-preview.png": trading,
 };
