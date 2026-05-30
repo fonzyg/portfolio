@@ -5,7 +5,7 @@ Static software engineering portfolio site for Alfonso Avila.
 ## Projects Featured
 
 - OakVault
-- AAAITSERVICE AI Tutoring Platform
+- AAA IT Toolkit
 - Mom's Clothing Biz
 - Trading Bot
 
@@ -13,7 +13,7 @@ Static software engineering portfolio site for Alfonso Avila.
 
 - Portfolio: local static site until deployed
 - OakVault: https://oakvaultcyber.com/
-- AAAITSERVICE: https://serveratutahwithaaaservices.com/
+- AAA IT Toolkit: https://serveratutahwithaaaservices.com/
 
 ## Run Locally
 
