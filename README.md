@@ -11,7 +11,7 @@ Static software engineering portfolio site for Alfonso Avila.
 
 ## Live Links
 
-- Portfolio: local static site until deployed
+- Portfolio: deploy as a DigitalOcean App Platform static site
 - OakVault: https://oakvaultcyber.com/
 - AAA IT Toolkit: https://serveratutahwithaaaservices.com/
 
@@ -24,3 +24,18 @@ python3 -m http.server 4173
 ```
 
 Then open `http://127.0.0.1:4173`.
+
+## Deploy
+
+Recommended production target: DigitalOcean App Platform as a static site.
+
+1. Create a public GitHub repository named `portfolio`.
+2. Push this repository to `https://github.com/fonzyg/portfolio.git`.
+3. In DigitalOcean, create a new App Platform app from the GitHub repo.
+4. Use these resource settings:
+   - Resource type: Static Site
+   - Branch: main
+   - Source directory: `/`
+   - Build command: leave blank
+   - Output directory: `/` or `.`
+   - Route: `/`
