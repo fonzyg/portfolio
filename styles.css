@@ -187,7 +187,15 @@ h3 {
 
 .hero-text {
   max-width: 780px;
+  margin-bottom: 16px;
+}
+
+.target-roles {
+  max-width: 780px;
   margin-bottom: 26px;
+  color: #34413a;
+  font-size: clamp(0.96rem, 1.4vw, 1.1rem);
+  font-weight: 750;
 }
 
 .hero-actions {
