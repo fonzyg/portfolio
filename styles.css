@@ -408,10 +408,21 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius);
   background: rgba(24, 32, 28, 0.78);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: #fff;
   font-size: 0.74rem;
   font-weight: 850;
   backdrop-filter: blur(8px);
+}
+
+a.image-note:hover,
+a.image-note:focus-visible {
+  border-color: rgba(255, 255, 255, 0.82);
+  background: rgba(30, 91, 79, 0.94);
+  outline: none;
+  transform: translateY(-1px);
 }
 
 .project-body {
